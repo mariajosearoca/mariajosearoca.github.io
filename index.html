@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maria Jose Aroca Moscote</title>
+<style>
+  :root {
+    --columbia-blue: #c4d8e2;
+    --columbia-blue-deep: #5b9bd5;
+    --navy: #1b2a4a;
+    --ink: #1f2430;
+    --muted: #5a6472;
+    --bg: #f7fafc;
+    --card-bg: #ffffff;
+    --border: #e1ebf0;
+    --radius: 14px;
+    --shadow: 0 4px 14px rgba(27, 42, 74, 0.07);
+    --shadow-hover: 0 10px 28px rgba(27, 42, 74, 0.14);
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+  }
+
+  a { color: inherit; }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 6vw;
+  }
+
+  nav .logo {
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    font-size: 1.05rem;
+  }
+
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav ul li a {
+    text-decoration: none;
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.92rem;
+    transition: color 0.2s;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+  }
+
+  nav ul li a:hover {
+    color: var(--columbia-blue-deep);
+    border-bottom-color: var(--columbia-blue-deep);
+  }
+
+  /* HERO */
+  header.hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    padding: 72px 6vw 56px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-photo {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--columbia-blue);
+    box-shadow: var(--shadow);
+    flex-shrink: 0;
+  }
+
+  .hero-text { max-width: 560px; }
+
+  .hero-text h1 {
+    font-size: 2.3rem;
+    margin: 0 0 6px;
+    color: var(--navy);
+  }
+
+  .hero-text .tagline {
+    font-size: 1.1rem;
+    color: var(--columbia-blue-deep);
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .hero-text p {
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .hero-links {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+
+  .btn-primary {
+    background: var(--columbia-blue-deep);
+    color: #fff;
+  }
+
+  .btn-secondary {
+    background: var(--card-bg);
+    color: var(--navy);
+    border: 1px solid var(--border);
+  }
+
+  .btn:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+
+  /* SECTIONS */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 6vw 80px;
+  }
+
+  section {
+    padding: 48px 0;
+    scroll-margin-top: 80px;
+    border-top: 1px solid var(--border);
+  }
+
+  section:first-of-type { border-top: none; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .section-head .num {
+    color: var(--columbia-blue-deep);
+    font-weight: 700;
+    font-size: 0.95rem;
+  }
+
+  section h2 {
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin: 0;
+  }
+
+  /* TILE GRID */
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+
+  .tile {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    box-shadow: var(--shadow);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .tile:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+  }
+
+  .tile .meta {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 4px;
+  }
+
+  .tile h3 {
+    margin: 0;
+    font-size: 1.08rem;
+    color: var(--navy);
+  }
+
+  .tile .place {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .tile .role {
+    font-weight: 600;
+    color: var(--columbia-blue-deep);
+    font-size: 0.92rem;
+    margin: 2px 0 10px;
+  }
+
+  .tile .dates {
+    font-size: 0.8rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .tile ul {
+    margin: 10px 0 0;
+    padding-left: 20px;
+    color: var(--ink);
+    font-size: 0.93rem;
+  }
+
+  .tile ul li { margin-bottom: 8px; }
+
+  .tile p.detail {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin: 6px 0 0;
+  }
+
+  .badge {
+    display: inline-block;
+    background: var(--columbia-blue);
+    color: var(--navy);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-top: 10px;
+  }
+
+  /* Additional info chips */
+  .chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .chip {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    color: var(--navy);
+    font-weight: 600;
+    box-shadow: var(--shadow);
+  }
+
+  footer {
+    text-align: center;
+    padding: 32px 6vw 48px;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 640px) {
+    nav ul { gap: 16px; }
+    nav ul li a { font-size: 0.82rem; }
+    header.hero { padding-top: 48px; text-align: center; justify-content: center; }
+    .hero-links { justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="#top">Maria Jose Aroca</a>
+  <ul>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#more">More</a></li>
+  </ul>
+</nav>
+
+<header class="hero" id="top">
+  <img class="hero-photo" src="assets/photo.jpg" alt="Maria Jose Aroca Moscote">
+  <div class="hero-text">
+    <h1>Maria Jose Aroca Moscote</h1>
+    <div class="tagline">MBA Candidate, Columbia Business School &mdash; Strategy, Tech/GenAI, Finance</div>
+    <p>Civil engineer turned strategy consultant, with experience driving GenAI adoption at scale, leading transformation programs across banking and infrastructure, and building nonprofit partnerships. Based in New York.</p>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="https://www.linkedin.com/in/mariajosearocamoscote" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-secondary" href="https://github.com/mariajosearoca" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-secondary" href="2026_Maria Jose Aroca CV_VF.pdf" target="_blank" rel="noopener">Download CV</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <section id="education">
+    <div class="section-head"><span class="num">01</span><h2>Education</h2></div>
+    <div class="tiles">
+      <div class="tile">
+        <div class="meta">
+          <h3>Columbia Business School</h3>
+          <span class="place">New York, New York</span>
+        </div>
+        <div class="role">MBA &mdash; Strategy, Tech/GenAI, Finance</div>
+        <p class="detail">Club leadership/activities: Tech Club, Columbia Entrepreneurship Organization, GenAI, Private Equity, Founder of Colombia Club</p>
+      </div>
+      <div class="tile">
+        <div class="meta">
+          <h3>Universidad de los Andes</h3>
+          <span class="place">Bogot&aacute;, Colombia</span>
+        </div>
+        <div class="role">Master's, Civil Engineering</div>
+        <div class="dates">2018 &ndash; 2019</div>
+        <p class="detail">Honors: Graduate teaching assistant &mdash; University sponsored 50% of tuition</p>
+      </div>
+      <div class="tile">
+        <div class="meta">
+          <h3>Universidad de los Andes</h3>
+          <span class="place">Bogot&aacute;, Colombia</span>
+        </div>
+        <div class="role">Bachelor's, Civil Engineering</div>
+        <div class="dates">2014 &ndash; 2018</div>
+        <p class="detail">Teacher assistant of roads design and geotechnical structures courses</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head"><span class="num">02</span><h2>Experience</h2></div>
+    <div class="tiles">
+
+      <div class="tile">
+        <div class="meta">
+          <h3>Fair Chance Futures</h3>
+          <span class="place">New York, New York</span>
+        </div>
+        <div class="role">Nonprofit Lead (MarComms &amp; Partnerships)</div>
+        <div class="dates">2026 &ndash; Present</div>
+        <span class="badge">Columbia-affiliated initiative</span>
+        <ul>
+          <li>Led marketing communications and nonprofit partnership efforts for a workforce development initiative, developing stakeholder-facing materials and recruitment strategy.</li>
+        </ul>
+      </div>
+
+      <div class="tile">
+        <div class="meta">
+          <h3>McKinsey &amp; Company</h3>
+          <span class="place">New York, NY / Bogot&aacute;, Colombia</span>
+        </div>
+        <div class="role">Jr. Associate</div>
+        <div class="dates">2025</div>
+        <ul>
+          <li>Built a business case and a strategy to scale a proprietary GenAI LLM firmwide, working with Firm senior leadership and the product team; quantified value, prioritized use cases, and supported leadership's $25M investment decisions by analyzing behavior data of a pilot group of high-engagement users and implementing refinements prior to global releases.</li>
+          <li>Drove global GenAI adoption across 5 regions (Asia, EEMA, Europe, Latam, NA) through tailored trainings and use cases based on group tenure, partnering with McKinsey partners, the learning team, and the product team to design training schedule, content, and materials firmwide; provided 100+ training sessions across 50+ offices (2,800+ participants), driving Monthly Active Users +4 p.p. to 78% and conversant level +16 p.p. to 80%.</li>
+        </ul>
+      </div>
+
+      <div class="tile">
+        <div class="meta">
+          <h3>McKinsey &amp; Company</h3>
+          <span class="place">Bogot&aacute;, Colombia</span>
+        </div>
+        <div class="role">Business Analyst</div>
+        <div class="dates">2023 &ndash; 2025</div>
+        <ul>
+          <li>Optimized procurement strategy and processes for a bank in Central America, aligning client procurement leadership and McKinsey experts' inputs; captured $19M in annual savings through sourcing and process improvements.</li>
+          <li>Drove a collections transformation for a leading Central American bank by analyzing the portfolio and collections procedures, and designing initiatives that increased recovery rates and reduced write-offs and operating costs, generating $20M annual impact.</li>
+          <li>Led a liabilities strategy for a bank in Colombia; co-designed a portfolio of digital, marketing, and commercial initiatives focused on increasing customer savings, unlocking $17M upside and a 1-year implementation roadmap.</li>
+          <li>Led a credit &amp; risk transformation for a bank in Colombia; designed and executed credit &amp; risk strategies based on analysis of risk procedures, generating ~$20M annual impact.</li>
+          <li>Designed and implemented credit &amp; collections initiatives for a retail company in Ecuador to expand credit-driven sales; improved portfolio performance, delivering ~$20M annual impact and reporting advancements to the CEO.</li>
+        </ul>
+      </div>
+
+      <div class="tile">
+        <div class="meta">
+          <h3>Decon Structural Engineer Consulting</h3>
+          <span class="place">Houston, Texas, US</span>
+        </div>
+        <div class="role">Graduate Engineer</div>
+        <div class="dates">2021 &ndash; 2023</div>
+        <p class="detail">Consulting engineering firm providing structural and civil engineering services</p>
+        <ul>
+          <li>Created designs for a $40M main bridge replacement project and a $1.1M Sam Houston Tollway improvement for the Texas Department of Transportation, addressing Right of Way issues and maintaining safe operation during construction.</li>
+        </ul>
+      </div>
+
+      <div class="tile">
+        <div class="meta">
+          <h3>China Harbour Engineering | Metro L&iacute;nea 1</h3>
+          <span class="place">Bogot&aacute;, Colombia</span>
+        </div>
+        <div class="role">Junior Assistant Project Manager</div>
+        <div class="dates">2020 &ndash; 2021</div>
+        <p class="detail">Global infrastructure company delivering projects across sectors</p>
+        <ul>
+          <li>Facilitated management and coordination of the design department, subcontractors, and the client for the $3.7B, 25 km first-ever Metro Line of Bogot&aacute;, including design, construction, and operation phases.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="more">
+    <div class="section-head"><span class="num">03</span><h2>Additional Information</h2></div>
+    <div class="tiles">
+      <div class="tile">
+        <h3>Tech</h3>
+        <div class="chip-row" style="margin-top:14px;">
+          <span class="chip">Full-stack (Java)</span>
+          <span class="chip">SQL</span>
+          <span class="chip">JDBC</span>
+          <span class="chip">Spring</span>
+          <span class="chip">HTML/CSS</span>
+          <span class="chip">Visual Studio</span>
+          <span class="chip">Python</span>
+        </div>
+      </div>
+      <div class="tile">
+        <h3>Volunteer</h3>
+        <ul>
+          <li>Catalina Mu&ntilde;oz Foundation &mdash; affordable housing</li>
+          <li>Los Andes "Fenicia" Program &mdash; academic mentoring</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  &copy; 2026 Maria Jose Aroca Moscote &middot; Built with Claude Code
+</footer>
+
+</body>
+</html>
